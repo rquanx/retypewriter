@@ -35,9 +35,11 @@ const calculatePatch = (diff: Diff[]): Patch[] => {
       const length = change[1].length
       patches.push({
         type: 'removal',
+        // 因为是从后往前删除，所以删除的位置是index + 删除的长度
         from: index + length,
         length,
       })
+      // 删除后，index不变，即光标位置不变
     }
     if (change[0] === 1) {
       patches.push({
