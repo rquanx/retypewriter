@@ -1,5 +1,4 @@
-import TypeIt from 'typeit'
-import { applyPatches, calculatePatch, diff } from './src'
+import { calculatePatch, createAnimator, diff } from './src'
 
 const inputEl = document.getElementById('input') as HTMLTextAreaElement
 const outputEl = document.getElementById('output') as HTMLTextAreaElement
@@ -38,34 +37,19 @@ outputEl.addEventListener('input', () => {
   start()
 })
 
-let typeIt: any
-function start() {
-  if (typeIt)
-    typeIt.reset()
+const sleep = (ms: number) => {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 
-  typingEl.textContent = ''
-  // @ts-expect-error
-  typeIt = new TypeIt(typingEl, {
-    speed: 50,
-    waitUntilVisible: true,
-  })
-  typeIt.type(input, { instant: true })
-  const patches = calculatePatch(diff(input, output))
+async function start() {
+  const _input = input
+  const patches = calculatePatch(diff(_input, output))
+  const animator = createAnimator(_input, patches)
 
-  for (const patch of patches) {
-    typeIt.pause(800)
-    if (patch.type === 'insert') {
-      typeIt.move(null, { to: 'START', instant: true })
-        .move(patch.from, { instant: true })
-        .type(patch.text, { delay: 300 })
-        .move(-3)
-    }
-    else {
-      typeIt.move(null, { to: 'START', instant: true })
-        .move(patch.from, { instant: true }).delete(patch.length)
-    }
+  for (const result of animator) {
+    typingEl.textContent = result.output
+    await sleep(Math.random() * 100)
   }
-  typeIt.go()
 }
 start()
 //   typeIt.type('Nvver', { delay: 300 })

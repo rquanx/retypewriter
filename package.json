@@ -31,13 +31,19 @@
   "sideEffects": false,
   "scripts": {
     "build": "rimraf dist && unbuild",
-    "dev": "unbuild --stub",
+    "dev": "vite",
+    "stub": "unbuild --stub",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/diff-match-patch": "^1.0.32",
+    "diff-match-patch": "^1.0.5",
+    "typeit": "^8.3.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
@@ -53,9 +59,5 @@
     "unbuild": "^0.7.0",
     "vite": "^2.8.6",
     "vitest": "^0.7.4"
-  },
-  "dependencies": {
-    "@types/diff-match-patch": "^1.0.32",
-    "diff-match-patch": "^1.0.5"
   }
 }
