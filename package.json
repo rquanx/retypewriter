@@ -1,34 +1,6 @@
 {
-  "name": "name",
-  "version": "0.0.0",
-  "packageManager": "pnpm@6.32.3",
-  "description": "",
-  "keywords": [],
-  "homepage": "https://github.com/antfu/[name]#readme",
-  "bugs": {
-    "url": "https://github.com/antfu/[name]/issues"
-  },
-  "license": "MIT",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/antfu/[name].git"
-  },
-  "funding": "https://github.com/sponsors/antfu",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "sideEffects": false,
+  "name": "@retypewriter/monorepo",
+  "private": true,
   "scripts": {
     "build": "rimraf dist && unbuild",
     "dev": "vite",
@@ -40,17 +12,14 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "@types/diff-match-patch": "^1.0.32",
-    "diff-match-patch": "^1.0.5",
-    "typeit": "^8.3.3"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
     "@antfu/ni": "^0.13.2",
     "@babel/types": "^7.17.0",
+    "@types/diff-match-patch": "^1.0.32",
     "@types/node": "^17.0.21",
     "bumpp": "^7.1.1",
+    "diff-match-patch": "^1.0.5",
     "eslint": "^8.11.0",
     "esno": "^0.14.1",
     "pnpm": "^6.32.3",

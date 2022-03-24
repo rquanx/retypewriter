@@ -1,4 +1,4 @@
-import { calculatePatch, createAnimator, diff } from './src'
+import { calculatePatch, createAnimator, diff } from '../packages/core/src'
 
 const inputEl = document.getElementById('input') as HTMLTextAreaElement
 const outputEl = document.getElementById('output') as HTMLTextAreaElement
