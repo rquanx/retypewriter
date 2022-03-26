@@ -1,1 +1,68 @@
-{}
+{
+  "name": "retypewriter",
+  "displayName": "reTypewriter",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "categories": [
+    "Other"
+  ],
+  "homepage": "https://github.com/antfu/[name]#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/[name]/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/[name].git",
+    "directory": "packages/vscode"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "publisher": "rq",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "npm run build --watch",
+    "public": "vsce publish --no-dependencies"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "retypewriter.snap",
+        "title": "Task snapshot of current file",
+        "category": "reTypewriter",
+        "icon": "$(diff-added)"
+      },
+      {
+        "command": "retypewriter.play",
+        "title": "Play typewriter",
+        "category": "reTypewriter",
+        "icon": "$(zap)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "retypewriter.snap",
+          "group": "navigation@1170"
+        },
+        {
+          "command": "retypewriter.play",
+          "group": "navigation@1170"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "engines": {
+    "vscode": "^1.65.0"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.65.0",
+    "tsup": "^5.12.1",
+    "unbuild": "^0.7.2"
+  }
+}

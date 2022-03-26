@@ -3,14 +3,21 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && unbuild",
-    "dev": "vite",
+    "dev": "vite playground",
     "stub": "unbuild --stub",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "vscode": "npm run dev -w retypewriter"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "vsce": "^2.7.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
